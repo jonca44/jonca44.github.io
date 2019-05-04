@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" integrity="sha256-7rF6RaSKyh16288E3hVdzQtHyzatA2MQRGu0cf6pqqM=" crossorigin="anonymous" />
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" integrity="sha256-7rF6RaSKyh16288E3hVdzQtHyzatA2MQRGu0cf6pqqM=" crossorigin="anonymous" />-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/js/all.min.js" integrity="sha256-HT9Zb3b1PVPvfLH/7/1veRtUvWObQuTyPn8tezb5HEg=" crossorigin="anonymous"></script>
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
 <!-- Material Design Bootstrap -->
@@ -165,9 +166,17 @@
         <h5>Contact</h5>
         <h1>Drop us a line.</h1>
         <span></span>
-        <p>Drop us a line below or email <a href="mailto:hello@noscemus.com" target="_blank">hello@noscemus.com</a>. We are excited to talk to you. Never an obligation and never unsolicited sales calls.</p>
+        <p><!--Drop us a line below or email <a href="mailto:hello@noscemus.com" target="_blank">hello@noscemus.com</a>. -->We are excited to talk to you. Never an obligation and never unsolicited sales calls.</p>
         <div class="contactForm">
                 <form class="gform" action="https://script.google.com/a/jonca.org/macros/s/AKfycbycmMvVzZkgqK58uGI1chByLxrCAdv89NwNIxud/exec" method="post" accept-charset="utf-8" id="form">
+                  <div style="display:none" class="thankyou_message">
+                    <!-- You can customize the thankyou message by editing the code below -->
+                    <h1>Thank you for contacting us!
+                    <br /> We will be in touchs soon!
+                    <br />
+                    <br />
+                    </h1>
+                   </div>
                   <ul class="conTop">
                     <li>
                         <input type="text" id="name" name="name" value="" placeholder="*Full Name" />
@@ -184,20 +193,21 @@
                         <textarea id="conMessage" name="conMessage" placeholder="*Tell us about your project"></textarea>
                     </li>
                 </ul>
-                  <ul class="conBottom">
+                  <ul>
                     <li>
-                      <input type="submit" value="Submit" id="conSubmit" />
+                      <!--<input type="submit" value="Submit" id="conSubmit" />-->
+                      <button type="submit" class="btn btn-primary btn-lg" id="load" data-loading-text="<i class='fas fa-circle-notch fa-spin'></i> Sending">Send</button>
                     </li>
                   </ul>
                 </form>
         </div>
-        <div id="formResponse"></div>    
         <p>&nbsp;</p>
       </section>
-</article>    <footer>
+</article>
+<footer>
         <section id="footer">
             <div class="footLeft">
-                <p class="navbar-brand">Nōscēmus Data</p>
+                <p class="navbar-brand">Noscemus</p>
                 <p><a id="footerLink" href="mailto:hello@noscemus.com" target="_blank">hello@noscemus.com</a></p>
                 <p><a id="footerLink" href="tel:+18063927597" target="_blank">+1 (806) 392-7597</a></p>
                 <p>&nbsp;</p>
@@ -207,5 +217,20 @@
         </section>
     </footer>
     <script data-cfasync="false" src="assets/js/form-submission-handler.js"></script>
+    <script>
+$(document).ready(function() {
+  $('.btn').on('click', function() {
+    var $this = $(this);
+    var loadingText = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+    if ($(this).html() !== loadingText) {
+      $this.data('original-text', $(this).html());
+      $this.html(loadingText);
+    }
+    setTimeout(function() {
+      $this.html($this.data('original-text'));
+    }, 2000);
+  });
+})
+    </script>
 </body>
 </html>
